@@ -17,8 +17,11 @@ function App() {
     });
 
     const data = await response.json();
-
     setFotos(data.results);
+  };
+
+  const openFoto = url => {
+    window.open(url);
   };
 
   return (
@@ -33,6 +36,20 @@ function App() {
           </Form>
         </Formik>
       </header>
+
+      <div className="container">
+        <div className="center">
+          {fotos.map(foto => (
+            <article
+              key={foto.id}
+              onClick={() => openFoto(foto.links.html)}
+            >
+              <img src={foto.urls.regular} alt={foto.alt_description} />
+              <p>{[foto.description, foto.alt_description].join(' - ')}</p>
+            </article>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
