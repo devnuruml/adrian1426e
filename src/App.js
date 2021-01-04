@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import './header.css';
+import './content.css';
+import './article.css';
 
 const initialState = {
   search: ''
@@ -32,7 +34,7 @@ function App() {
           onSubmit={responseApi}
         >
           <Form>
-            <Field name='search' />
+            <Field name='search' placeholder='escriba un texto y busca' />
           </Form>
         </Formik>
       </header>
